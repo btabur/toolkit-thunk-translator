@@ -10,6 +10,13 @@ body {
     height: 100vh;
     overflow: hidden;
     font-family: 'poppins';
+
+    background: rgba(156, 237, 110, 1);
+    background: conic-gradient(
+      from 315deg,
+      rgb(75, 189, 209),
+      rgb(183, 46, 201)
+    );
 }
 .main-page {
     height: 100vh;
@@ -28,6 +35,7 @@ body {
     h1 {
         text-align: center;
         font-size: 35px;
+        color: white;
         @media (max-width:800px) {
             font-size: 30px;
         }
@@ -38,10 +46,17 @@ body {
     gap: 10px;
     margin-top: 50px;
     height: 40px;
+   
 
     .select {
         flex:1;
         color: black;
+    }
+    button {
+        border-radius: 10px ;
+        border: none;
+        padding: 5px 10px;
+        box-shadow: 0 0 10px black;
     }
 
 }
@@ -60,17 +75,27 @@ body {
         min-height: 300px;
         max-height: 500px;
         padding: 10px;
-        font-size: 17px;
+        font-size:17px;
         font-family: 'poppins';
 
       
         &:disabled {
             background-color: rgb(189, 179, 179);
-            color: gray;
+            color: rgb(247, 244, 244);
+        }
+        .loading {
+            background-image: url('https://media4.giphy.com/media/3o7bu3XilJ5BOiSGic/giphy.gif?cid=6c09b952jkzr3i0jv5c4upphydco8g82xidm8az7o2nsfge2&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+            background-size: contain;
+            background-position: center;
         }
     }
 }
 
+
 #translate-btn {
     margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 0 10px black;
 }

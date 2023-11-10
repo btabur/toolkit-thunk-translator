@@ -13,14 +13,15 @@ export const getLanguages = createAsyncThunk("getLanguages", async()=> {
 
 //çeviri için istek atma
 
-export const translateText = createAsyncThunk("translateText", async ()=> {
+export const translateText = createAsyncThunk("translateText", 
+  async (param)=> {
 
     //api isteği
 
-    const params = new URLSearchParams();
-params.set('source_language', 'en');
-params.set('target_language', 'id');
-params.set('text', 'What is your name?');
+const params = new URLSearchParams();
+params.set('source_language', param.sourceLang.value);
+params.set('target_language', param.targetLang.value);
+params.set('text', param.text);
 
 const options2 = {
   method: 'POST',
@@ -32,7 +33,9 @@ const options2 = {
   },
   data: params,
 };
-const res = axios.request(options2)
+const res = await axios.request(options2)
+return res.data.data.translatedText;
+
 })
 
 

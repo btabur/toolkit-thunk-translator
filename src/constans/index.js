@@ -6,3 +6,4 @@ export const options = {
     'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
   }
 };
+

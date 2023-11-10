@@ -64,8 +64,6 @@ export const userSlice= createSlice({
 
 
 
-
-
 ### Notlar
 
 1. useMemo() : Ağır hessaplamalar ve işlemler yapıldığında kulanılır. Önbelleğe kaydeder ve bağımlı değişken değiştiğinde sadece çalışır ve böylece gereksir render ların önüne geçer
@@ -119,3 +117,6 @@ export default React.memo(Button)
   );
 };
  ```
+ 4. asekron fonksiyonlar tek parametre alır
+
+ ![](ekran.png)

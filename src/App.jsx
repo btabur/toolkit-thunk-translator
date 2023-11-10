@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getLanguages, translateText} from './redux/actions/trtanslateActions'
 import './style.scss';
 import Select from 'react-select';
+import { clearAnswer } from './redux/slices/translateSlice';
 
 
 
@@ -34,6 +35,13 @@ const App = () => {
     dispatch(getLanguages())
   },[])
  
+  const handleSwap = ()=> {
+    setSourceLang(targetLang);
+    setTargetLang(sourceLang);
+    setText(state.answer);
+    dispatch(clearAnswer())
+    
+  }
   return (
     <div className='main-page'>
       <div className='container'>
@@ -45,7 +53,7 @@ const App = () => {
          onChange={setSourceLang}
          value={sourceLang}
           className='select' options={refinedData}/>
-          <button>Değiş</button>
+          <button onClick={handleSwap}>Değiş</button>
           <Select
              isLoading={state.isLoading}
              value={targetLang}
@@ -54,11 +62,11 @@ const App = () => {
         </div>
         {/* orta Kısım */}
         <div className='middle'>
-          <textarea onChange={(e)=> setText(e.target.value)} placeholder='enter the text you want to translate'></textarea>
-          <textarea disabled></textarea>
+          <textarea value={text} onChange={(e)=> setText(e.target.value)} placeholder='enter the text you want to translate'></textarea>
+          <textarea className={state.isTextLoading && 'loading'} value={state.answer} disabled></textarea>
         </div>
         {/* alt kısım */}
-       <button onClick={()=> {dispatch(translateText(sourceLang,targetLang,text))}} id='translate-btn'>Translate</button>
+       <button className='btn-translate' onClick={()=> {dispatch(translateText({sourceLang,targetLang,text}))}} id='translate-btn'>Translate</button>
       </div>
       
 
